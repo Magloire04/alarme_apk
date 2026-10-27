@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+.kotlin/
+
+# Configuration locale
+local.properties
+*.iml
+.idea/
+.vscode/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Signature
+*.jks
+*.keystore
+keystore.properties
+
+# Système
+.DS_Store
+Thumbs.db
