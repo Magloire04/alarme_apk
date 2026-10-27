@@ -24,7 +24,12 @@ abstract class BindingsModule {
 
     @Binds
     abstract fun bindClock(clock: DeviceClock): Clock
+}
 
+/** Module à part pour que les tests d'interface le remplacent sans poser de vraies alarmes. */
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class SchedulingModule {
     @Binds
     abstract fun bindAlarmScheduling(scheduler: AlarmScheduler): AlarmScheduling
 }

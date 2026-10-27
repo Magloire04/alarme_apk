@@ -8,9 +8,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import com.bytechnum.reveil.data.db.AlarmDao
-import com.bytechnum.reveil.data.db.AppDatabase
-import com.bytechnum.reveil.data.db.WakeEventDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,16 +34,6 @@ annotation class ApplicationScope
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    @Provides
-    @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): AppDatabase = AppDatabase.build(context)
-
-    @Provides
-    fun provideAlarmDao(database: AppDatabase): AlarmDao = database.alarmDao()
-
-    @Provides
-    fun provideWakeEventDao(database: AppDatabase): WakeEventDao = database.wakeEventDao()
-
     // Préférences dans le stockage protégé par l'appareil, comme la base.
     @Provides
     @Singleton
