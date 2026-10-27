@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Réveil Défi</string>
+
+  <!-- Sonnerie -->
+  <string name="ringing_channel_name">Sonnerie des alarmes</string>
+  <string name="ringing_notification_title">Réveil en cours</string>
+  <string name="ringing_notification_text">Touche pour ouvrir</string>
+  <string name="ringing_default_message">C\'est l\'heure de te lever</string>
+  <string name="ringing_stop_provisional">Arrêter (provisoire)</string>
 </resources>
