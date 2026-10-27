@@ -20,7 +20,8 @@ class HandleAlarmFiredTest {
     private val clock = FixedClock(ZonedDateTime.of(LocalDateTime.parse("2026-10-27T07:00:05"), zone))
     private val store = FakeAlarmStore()
     private val scheduling = FakeScheduling()
-    private val handleAlarmFired = HandleAlarmFired(store, ScheduleNext(scheduling, ComputeNextTrigger(), clock), clock)
+    private val handleAlarmFired =
+        HandleAlarmFired(store, ScheduleNext(scheduling, ComputeNextTrigger(), clock), scheduling, clock)
 
     private fun millisAt(text: String): Long =
         ZonedDateTime.of(LocalDateTime.parse(text), zone).toInstant().toEpochMilli()
@@ -33,6 +34,17 @@ class HandleAlarmFiredTest {
 
         assertEquals(id, fired?.id)
         assertFalse(store.getById(id)!!.isEnabled)
+        assertFalse(scheduling.scheduled.containsKey(id))
+    }
+
+    @Test
+    fun oneShotAlarmScheduledByAnotherPathIsCancelled() = runTest {
+        // Au démarrage à froid, la replanification a pu la reposer pour le lendemain.
+        val id = store.upsert(Alarm.createDefault(0).copy(hour = 7, minute = 0))
+        scheduling.schedule(id, millisAt("2026-10-28T07:00"))
+
+        handleAlarmFired(id)
+
         assertFalse(scheduling.scheduled.containsKey(id))
     }
 
