@@ -1,6 +1,7 @@
 package com.bytechnum.reveil.domain.port
 
 import com.bytechnum.reveil.domain.model.Alarm
+import com.bytechnum.reveil.domain.model.RingingState
 import com.bytechnum.reveil.domain.model.WakeEvent
 import java.time.ZonedDateTime
 import kotlinx.coroutines.flow.Flow
@@ -30,4 +31,13 @@ interface AlarmScheduling {
     fun schedule(alarmId: Int, triggerAtMillis: Long)
 
     fun cancel(alarmId: Int)
+}
+
+/** Sonnerie en cours, relue si le service est relancé par le système. */
+interface RingingStateStore {
+    suspend fun read(): RingingState?
+
+    suspend fun write(state: RingingState)
+
+    suspend fun clear()
 }

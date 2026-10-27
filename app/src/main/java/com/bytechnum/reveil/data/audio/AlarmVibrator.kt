@@ -9,10 +9,11 @@ import android.os.Vibrator
 import android.os.VibratorManager
 import androidx.annotation.RequiresApi
 import com.bytechnum.reveil.domain.alarm.VibrationLevel
+import com.bytechnum.reveil.ringing.VibrationOutput
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class AlarmVibrator @Inject constructor(@param:ApplicationContext private val context: Context) {
+class AlarmVibrator @Inject constructor(@param:ApplicationContext private val context: Context) : VibrationOutput {
     private val vibrator: Vibrator by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             context.getSystemService(VibratorManager::class.java).defaultVibrator
@@ -22,7 +23,7 @@ class AlarmVibrator @Inject constructor(@param:ApplicationContext private val co
         }
     }
 
-    fun vibrate(level: VibrationLevel) {
+    override fun vibrate(level: VibrationLevel) {
         // Motif répété : attente, vibration, pause (ms).
         val timings = when (level) {
             VibrationLevel.NORMAL -> longArrayOf(0, 500, 1000)
@@ -48,7 +49,7 @@ class AlarmVibrator @Inject constructor(@param:ApplicationContext private val co
         }
     }
 
-    fun stop() {
+    override fun stop() {
         vibrator.cancel()
     }
 
