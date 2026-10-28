@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -49,9 +50,14 @@ fun RingingScreen(state: RingingUiState, onStopProvisional: () -> Unit) {
                 textAlign = TextAlign.Center,
             )
             Spacer(Modifier.height(64.dp))
+            // Fond blanc : un bouton bleu sur l'écran bleu ne se voyait pas.
             Button(
                 onClick = onStopProvisional,
                 modifier = Modifier.fillMaxWidth().height(72.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.onPrimary,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                ),
             ) {
                 Text(
                     text = stringResource(R.string.ringing_stop_provisional),
