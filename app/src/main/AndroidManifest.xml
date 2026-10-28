@@ -34,6 +34,17 @@
       </intent-filter>
     </activity>
 
+    <activity
+      android:name=".ringing.RingingActivity"
+      android:directBootAware="true"
+      android:excludeFromRecents="true"
+      android:exported="false"
+      android:launchMode="singleInstance"
+      android:showWhenLocked="true"
+      android:taskAffinity=""
+      android:theme="@style/Theme.Reveil"
+      android:turnScreenOn="true" />
+
     <receiver
       android:name=".ringing.AlarmReceiver"
       android:directBootAware="true"
