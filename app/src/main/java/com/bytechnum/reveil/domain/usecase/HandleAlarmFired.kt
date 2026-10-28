@@ -1,6 +1,7 @@
 package com.bytechnum.reveil.domain.usecase
 
 import com.bytechnum.reveil.domain.model.Alarm
+import com.bytechnum.reveil.domain.port.AlarmScheduling
 import com.bytechnum.reveil.domain.port.AlarmStore
 import com.bytechnum.reveil.domain.port.Clock
 import javax.inject.Inject
@@ -12,6 +13,7 @@ import javax.inject.Inject
 class HandleAlarmFired @Inject constructor(
     private val store: AlarmStore,
     private val scheduleNext: ScheduleNext,
+    private val scheduling: AlarmScheduling,
     private val clock: Clock,
 ) {
     suspend operator fun invoke(alarmId: Int): Alarm? {
@@ -20,6 +22,8 @@ class HandleAlarmFired @Inject constructor(
             scheduleNext(alarm)
         } else {
             store.upsert(alarm.copy(isEnabled = false, updatedAt = clock.now().toInstant().toEpochMilli()))
+            // Une replanification lancée au démarrage du processus a pu la reposer pour le lendemain.
+            scheduling.cancel(alarm.id)
         }
         return alarm
     }

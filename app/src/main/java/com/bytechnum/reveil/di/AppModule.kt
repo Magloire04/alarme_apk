@@ -7,7 +7,7 @@ import android.media.AudioManager
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStoreFile
+import com.bytechnum.reveil.data.prefs.deviceProtectedPreferencesFile
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,17 +39,13 @@ object AppModule {
     @Singleton
     @SettingsPreferences
     fun provideSettingsDataStore(@ApplicationContext context: Context): DataStore<Preferences> =
-        PreferenceDataStoreFactory.create {
-            context.createDeviceProtectedStorageContext().preferencesDataStoreFile("settings")
-        }
+        PreferenceDataStoreFactory.create { deviceProtectedPreferencesFile(context, "settings") }
 
     @Provides
     @Singleton
     @RingingPreferences
     fun provideRingingDataStore(@ApplicationContext context: Context): DataStore<Preferences> =
-        PreferenceDataStoreFactory.create {
-            context.createDeviceProtectedStorageContext().preferencesDataStoreFile("ringing")
-        }
+        PreferenceDataStoreFactory.create { deviceProtectedPreferencesFile(context, "ringing") }
 
     @Provides
     fun provideAlarmManager(@ApplicationContext context: Context): AlarmManager =
