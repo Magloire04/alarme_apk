@@ -2,6 +2,57 @@
 <resources>
   <string name="app_name">Réveil Défi</string>
 
+  <!-- Liste des alarmes -->
+  <string name="add_alarm">Ajouter une alarme</string>
+  <string name="next_alarm">Prochaine alarme</string>
+  <string name="next_alarm_in">dans %1$s</string>
+  <string name="delay_hours_minutes">%1$d h %2$02d min</string>
+  <string name="delay_minutes">%1$d min</string>
+  <string name="no_alarm_title">Aucune alarme</string>
+  <string name="no_alarm_hint">Touche + pour en créer une.</string>
+  <string name="repeat_once">Une seule fois</string>
+  <string name="repeat_every_day">Tous les jours</string>
+  <string name="repeat_weekdays">Du lundi au vendredi</string>
+  <string name="repeat_weekend">Le week-end</string>
+  <string name="test_alarm_action">Alarme de test</string>
+  <string name="test_alarm_label">Alarme de test</string>
+  <string name="test_alarm_created">Alarme de test dans moins de 2 minutes. Verrouille le téléphone et attends.</string>
+
+  <!-- Permissions -->
+  <string name="permissions_title">L\'alarme risque de ne pas sonner</string>
+  <string name="permission_notifications">Notifications bloquées</string>
+  <string name="permission_full_screen">Affichage plein écran bloqué</string>
+  <string name="permission_exact_alarm">Alarmes à l\'heure exacte bloquées</string>
+  <string name="permission_grant">Autoriser</string>
+
+  <!-- Édition d'une alarme -->
+  <string name="edit_new_title">Nouvelle alarme</string>
+  <string name="edit_title">Modifier l\'alarme</string>
+  <string name="back">Retour</string>
+  <string name="days_label">Répéter</string>
+  <string name="label_label">Nom de l\'alarme</string>
+  <string name="sound_label">Sonnerie</string>
+  <string name="sound_soft">Douce</string>
+  <string name="sound_classic">Classique</string>
+  <string name="sound_strident">Stridente</string>
+  <string name="listen">Écouter</string>
+  <string name="vibration_label">Vibration</string>
+  <string name="challenge_label">Défi pour arrêter</string>
+  <string name="challenge_jump">Sauts</string>
+  <string name="challenge_squat">Squats</string>
+  <string name="challenge_march">Pas sur place</string>
+  <string name="challenge_jack">Jumping jacks</string>
+  <string name="challenge_random">Au hasard</string>
+  <string name="target_label">Objectif : %1$d répétitions</string>
+  <string name="difficulty_label">Difficulté</string>
+  <string name="difficulty_easy">Facile</string>
+  <string name="difficulty_normal">Normal</string>
+  <string name="difficulty_hard">Difficile</string>
+  <string name="save">Enregistrer</string>
+  <string name="delete">Supprimer</string>
+  <string name="delete_confirm_title">Supprimer cette alarme ?</string>
+  <string name="cancel">Annuler</string>
+
   <!-- Sonnerie -->
   <string name="ringing_channel_name">Sonnerie des alarmes</string>
   <string name="ringing_notification_title">Réveil en cours</string>
