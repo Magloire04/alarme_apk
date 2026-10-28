@@ -11,6 +11,7 @@ class AlarmReceiver : BroadcastReceiver() {
         if (intent.action != ACTION_FIRE) return
         val alarmId = intent.getIntExtra(EXTRA_ALARM_ID, NO_ALARM_ID)
         if (alarmId == NO_ALARM_ID) return
+        StartupWakeLock.acquire(context)
         ContextCompat.startForegroundService(context, AlarmService.fire(context, alarmId))
     }
 
