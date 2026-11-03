@@ -1,0 +1,40 @@
+package com.bytechnum.reveil.di
+
+import com.bytechnum.reveil.data.prefs.DataStoreRingingStateStore
+import com.bytechnum.reveil.data.repository.RoomAlarmStore
+import com.bytechnum.reveil.data.repository.RoomWakeEventStore
+import com.bytechnum.reveil.data.scheduler.AlarmScheduler
+import com.bytechnum.reveil.domain.port.AlarmScheduling
+import com.bytechnum.reveil.domain.port.AlarmStore
+import com.bytechnum.reveil.domain.port.Clock
+import com.bytechnum.reveil.domain.port.RingingStateStore
+import com.bytechnum.reveil.domain.port.WakeEventStore
+import com.bytechnum.reveil.util.DeviceClock
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class BindingsModule {
+    @Binds
+    abstract fun bindAlarmStore(store: RoomAlarmStore): AlarmStore
+
+    @Binds
+    abstract fun bindWakeEventStore(store: RoomWakeEventStore): WakeEventStore
+
+    @Binds
+    abstract fun bindClock(clock: DeviceClock): Clock
+
+    @Binds
+    abstract fun bindRingingStateStore(store: DataStoreRingingStateStore): RingingStateStore
+}
+
+/** Module à part pour que les tests d'interface le remplacent sans poser de vraies alarmes. */
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class SchedulingModule {
+    @Binds
+    abstract fun bindAlarmScheduling(scheduler: AlarmScheduler): AlarmScheduling
+}

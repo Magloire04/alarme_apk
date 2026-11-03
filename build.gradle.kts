@@ -10,14 +10,13 @@ plugins {
 
 spotless {
     lineEndings = com.diffplug.spotless.LineEnding.UNIX
+    // Sources seulement : parcourir build/ échoue quand KSP y écrit en parallèle.
     kotlin {
-        target("**/*.kt")
-        targetExclude("**/build/**")
+        target("app/src/**/*.kt")
         ktlint(libs.versions.ktlint.get())
     }
     kotlinGradle {
-        target("**/*.gradle.kts")
-        targetExclude("**/build/**")
+        target("*.gradle.kts", "app/*.gradle.kts")
         ktlint(libs.versions.ktlint.get())
     }
 }
