@@ -6,13 +6,16 @@ Publiée par TECHNUM. Public visé : Afrique francophone, 9 à 35 ans, télépho
 
 ## État
 
-Étape 1 en cours : socle du projet et alarme fiable. Voir le [plan de l'étape 1](documentations/plans/2026-10-27-etape1-socle-alarme.md).
+Étape 1 terminée : les alarmes se créent, se planifient et sonnent à l'heure, écran verrouillé, appli fermée et après un redémarrage. Un bouton d'arrêt provisoire remplace encore le défi caméra. Résultats sur téléphone : [vérification de l'étape 1](documentations/verification.md).
+
+Étape suivante : caméra et défi des sauts.
 
 ## Documents
 
 - [Cadrage technique](documentations/cadrage.md)
 - [Conception de la V1](documentations/specs/2026-10-27-reveil-v1-design.md)
 - [Plan de l'étape 1](documentations/plans/2026-10-27-etape1-socle-alarme.md)
+- [Vérification de l'étape 1](documentations/verification.md)
 
 ## Prérequis
 
@@ -37,6 +40,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 - Chaque tâche a son issue GitHub et sa branche : `feature/{numéro d'issue}-{description-en-kebab-case}` (ou `bugfix/`, `hotfix/`).
 - Messages de commit au format Conventional Commits : `type(scope): description`, en minuscules, sans point final, 72 caractères au plus.
 - Une PR par branche, vers `develop`, titrée `[#{numéro}] Description courte`, avec les sections du [modèle de PR](.github/pull_request_template.md). Moins de 400 lignes, sinon la PR est fractionnée ou l'écart est justifié dans sa description.
+- PR empilées (chacune basée sur la branche de la précédente) : les fusionner dans l'ordre et supprimer la branche après chaque fusion. GitHub fait alors pointer la PR suivante vers `develop` ; sinon elle se fusionne dans une branche intermédiaire et `develop` ne reçoit rien.
 - Activer le crochet de formatage local une fois par clone : `git config core.hooksPath .githooks`.
 
 ### Écarts aux conventions, décidés le 27 octobre 2026

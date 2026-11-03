@@ -50,6 +50,8 @@ Ils demandent une présence physique ou coupent la connexion adb.
 
 | Date | Scénario | Résultat | Remarques |
 | --- | --- | --- | --- |
-| | Redémarrage sans déverrouiller | | |
-| | Ne pas déranger | | |
-| | Appel entrant | | |
+| 03/11 | Redémarrage sans déverrouiller | Réussi | L'alarme sonne sur l'écran verrouillé avant la saisie du code. |
+| 03/11 | Ne pas déranger | Réussi | L'alarme sonne avec le mode activé. |
+| 03/11 | Appel entrant | Réussi | Constaté par l'utilisateur. |
+
+Tous les scénarios prévus pour l'étape 1 ont été exécutés, sauf l'arrêt à 15 minutes (voir plus haut).
