@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Refuse le commit si le code Kotlin n'est pas formaté. Correction : ./gradlew spotlessApply
+set -e
+if git diff --cached --name-only | grep -qE '\.kts?$'; then
+  ./gradlew spotlessCheck --quiet --console=plain
+fi
